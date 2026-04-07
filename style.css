@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: linear-gradient(to top, #87CEFA, #E0F7FF);
+    color: #333;
+}
+
+/* ☁️ Background awan */
+.clouds {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.clouds::before,
+.clouds::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background: url('https://i.ibb.co/7S6p7F5/clouds.png') repeat-x;
+    opacity: 0.7;
+    animation: moveClouds 60s linear infinite;
+}
+
+.clouds::after {
+    top: 60px;
+    opacity: 0.5;
+    animation-duration: 90s;
+}
+
+@keyframes moveClouds {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* 🌤 Container */
+.container {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(8px);
+    padding: 20px;
+    border-radius: 20px;
+    width: 320px;
+    margin: 40px auto;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+
+    /* ✅ ini bikin isi bisa scroll */
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Judul */
+h2 {
+    margin-bottom: 15px;
+}
+
+/* Input */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+input[type="time"] {
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Tombol */
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* List */
+ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+li {
+    background: rgba(255,255,255,0.9);
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.4s ease;
+}
+
+/* Animasi item masuk */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tombol hapus */
+.hapus {
+    background: #ff4d4d;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+/* ✨ Scrollbar biar cantik */
+.container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: #4facfe;
+    border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: transparent;
+}
